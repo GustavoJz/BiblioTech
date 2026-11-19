@@ -1,7 +1,12 @@
+using BiblioTech2.Api.Data;
+using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore; 
 
 var builder = WebApplication.CreateBuilder(args);  // inicializa una nueva instancia, encargada de leer la configuración de la aplicación (appsettings.json, variables de entorno, etc.)
                                                    // y de configurar los servicios que la aplicación necesita para funcionar correctamente)
+
+builder.Services.AddDbContext<BibliotecaContext>(opciones =>
+opciones.UseSqlServer(builder.Configuration.GetConnectionString("BiblioTechConnection"))); 
 
 // Add services to the container.
 
